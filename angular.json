@@ -27,7 +27,10 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              
+              "src/theme.scss",
+              "src/styles.scss",
+              "./node_modules/@covalent/core/common/platform.scss",
             ],
             "scripts": [],
             "es5BrowserSupport": true
