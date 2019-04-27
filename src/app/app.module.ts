@@ -6,12 +6,10 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 /* Material */
 import { MaterialModule } from "./material/material.module";
 /* Covalent */
-import { CovalentLayoutModule } from '@covalent/core/layout';
-import { CovalentStepsModule  } from '@covalent/core/steps';
-import { CovalentHttpModule } from '@covalent/http';
-import { CovalentHighlightModule } from '@covalent/highlight';
-import { CovalentMarkdownModule } from '@covalent/markdown';
-import { CovalentDynamicFormsModule } from '@covalent/dynamic-forms';
+import { CovalentModule } from "./covalent/covalent.module";
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
+
 
 @NgModule({
   declarations: [
@@ -22,12 +20,8 @@ import { CovalentDynamicFormsModule } from '@covalent/dynamic-forms';
     AppRoutingModule,
     BrowserAnimationsModule,
     MaterialModule,
-    CovalentLayoutModule,
-    CovalentStepsModule,
-    CovalentHttpModule.forRoot(),
-    CovalentHighlightModule,
-    CovalentMarkdownModule,
-    CovalentDynamicFormsModule,
+    CovalentModule,
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,19 +1,19 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { ConsumerRoutingModule } from './consumer-routing.module';
+import { AnalystRoutingModule } from './analyst-routing.module';
 
 import { MaterialModule } from "../material/material.module";
 import { CovalentModule } from "../covalent/covalent.module";
-import { RootConsumerComponent } from './root-consumer/root-consumer.component';
+import { RootAnalystComponent } from './root-analyst/root-analyst.component';
 
 @NgModule({
-  declarations: [RootConsumerComponent],
+  declarations: [RootAnalystComponent],
   imports: [
     CommonModule,
     MaterialModule,
     CovalentModule,
-    ConsumerRoutingModule
+    AnalystRoutingModule
   ]
 })
-export class ConsumerModule { }
+export class AnalystModule { }
