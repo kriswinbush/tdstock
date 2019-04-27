@@ -1,27 +1,27 @@
-<td-layout-nav logo="teradata-dark" toolbarTitle="TD Stock" navigationRoute="/">
-
-  <td-layout [mode]="side" [opened]="true" [sidenavWidth]="257">
+<td-layout [mode]="side" [opened]="false" [sidenavWidth]="257">
+    <td-navigation-drawer sidenavTitle="Td Stock" logo="logo" icon="icon" name="name" password="password" color="color" navigationRoute="/">
+      .. main drawer content
+      <div td-navigation-drawer-menu>
+        .. menu drawer content
+      </div>
+    </td-navigation-drawer>
     <div td-sidenav-content>
      .. more sidenav content
-     <button color="accent" mat-raised-button>new button</button>
-     <mat-icon class="mat-icon-logo" svgIcon="teradata"></mat-icon>
     </div>
-    <div layout="row">
-      <div flex>
-          <button mat-icon-button [tdLayoutToggle]="true">
-              <mat-icon>menu</mat-icon>
-            </button>
-      </div>
-      <div flex>
-          <h1 class="mat-display-1">
-              Welcome to {{ title }}!
-            </h1>
-      </div>
-      
-    </div>
-    <div class="container">
-      <router-outlet></router-outlet>
-    </div>
-  </td-layout>
-
-</td-layout-nav>
+    <td-layout-nav>
+      <div td-toolbar-content layout="row" layout-align="start center" flex>
+          <button mat-icon-button td-menu-button tdLayoutToggle>
+            <mat-icon>menu</mat-icon>
+          </button>
+          <div flex></div>
+          <span [routerLink]="['/']" class="cursor-pointer">Td Stock</span>
+          <span flex></span>
+          <a mat-icon-button matTooltip="Docs" href="https://teradata.github.io/covalent/" target="_blank"><mat-icon>chrome_reader_mode</mat-icon></a>
+          <a mat-icon-button matTooltip="home" href="/" target="_blank"><mat-icon>home</mat-icon></a>
+        </div>
+        <div class="container">
+          <router-outlet></router-outlet>
+        </div>
+    </td-layout-nav>
+</td-layout>
+  
