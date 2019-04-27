@@ -24,13 +24,13 @@
             "tsConfig": "src/tsconfig.app.json",
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/assets",
+              "src/manifest.json"
             ],
             "styles": [
-              
               "src/theme.scss",
               "src/styles.scss",
-              "./node_modules/@covalent/core/common/platform.scss",
+              "./node_modules/@covalent/core/common/platform.scss"
             ],
             "scripts": [],
             "es5BrowserSupport": true
@@ -58,7 +58,9 @@
                   "maximumWarning": "2mb",
                   "maximumError": "5mb"
                 }
-              ]
+              ],
+              "serviceWorker": true,
+              "ngswConfigPath": "src/ngsw-config.json"
             }
           }
         },
@@ -92,7 +94,8 @@
             "scripts": [],
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/assets",
+              "src/manifest.json"
             ]
           }
         },
