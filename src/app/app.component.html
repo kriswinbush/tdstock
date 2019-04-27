@@ -1,27 +1,39 @@
-<td-layout-nav logo="teradata-dark" toolbarTitle="TD Stock" navigationRoute="/">
-
-  <td-layout [mode]="side" [opened]="true" [sidenavWidth]="257">
-    <div td-sidenav-content>
-     .. more sidenav content
-     <button color="accent" mat-raised-button>new button</button>
-     <mat-icon class="mat-icon-logo" svgIcon="teradata"></mat-icon>
+<td-layout [mode]="side" [opened]="false" [sidenavWidth]="257">
+  <td-navigation-drawer sidenavTitle="Td Stock" logo="logo" icon="icon" name="name" password="password" color="color"
+    navigationRoute="/">
+    .. main drawer content
+    <div td-navigation-drawer-menu>
+      .. menu drawer content
     </div>
-    <div layout="row">
-      <div flex>
-          <button mat-icon-button [tdLayoutToggle]="true">
-              <mat-icon>menu</mat-icon>
-            </button>
-      </div>
-      <div flex>
-          <h1 class="mat-display-1">
-              Welcome to {{ title }}!
-            </h1>
-      </div>
-      
+  </td-navigation-drawer>
+  <div td-sidenav-content>
+    <mat-nav-list>
+      <a *ngFor="let item of routes" mat-list-item routerLink={{item.route}} tdLayoutToggle>
+        <mat-icon>{{item.icon}}</mat-icon>{{item.title}}
+      </a>
+    </mat-nav-list>
+  </div>
+  <td-layout-nav>
+    <div td-toolbar-content layout="row" layout-align="start center" flex>
+      <button mat-icon-button td-menu-button tdLayoutToggle>
+        <mat-icon>menu</mat-icon>
+      </button>
+      <div flex></div>
+      <span [routerLink]="['/']" class="cursor-pointer">Td Stock</span>
+      <div flex></div>
+      <button mat-icon-button matTooltip="Comsuner" routerLink='/consumer'>
+        <mat-icon>show_chart</mat-icon>
+      </button>
+      <button mat-icon-button matTooltip="Analyst" routerLink='/analyst'>
+        <mat-icon>assessment</mat-icon>
+      </button>
+      <button mat-icon-button matTooltip="Home" routerLink='/'>
+        <mat-icon>home</mat-icon>
+      </button>
     </div>
     <div class="container">
       <router-outlet></router-outlet>
     </div>
-  </td-layout>
-
-</td-layout-nav>
+  </td-layout-nav>
+</td-layout>
+  
