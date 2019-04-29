@@ -1,16 +1,59 @@
-<td-layout-card-over cardTitle="Analyst" cardSubtitle="Stock Market Analyst Dashboard">
-      <h1>Root analyst</h1>
-      <h1>Root analyst</h1>
-      <h1>Root analyst</h1>
-      <h1>Root analyst</h1>
-      <h1>Root analyst</h1>
-      <h1>Root analyst</h1>
-      <h1>Root analyst</h1>
-      <h1>Root analyst</h1>
-      <h1>Root analyst</h1>
-      <h1>Root analyst</h1>
-      <h1>Root analyst</h1>
-      <h1>Root analyst</h1>
-      <h1>Root analyst</h1>
-</td-layout-card-over>
+<td-layout-card-over cardTitle="Analyst" cardSubtitle="Stock Market Analyst Report">
 
+      <form [formGroup]="stepForm" (ngSubmit)="onSubmit()">
+
+            <td-steps mode="'horizontal'">
+
+                  <td-step #step1 sublabel="Title and stock symbol for your report" [active]="true"
+                        [disabled]="disabled" (activated)="activeStep1Event()" (deactivated)="deactiveStep1Event()">
+                        <ng-template td-step-label><span>Title and Stock Symbol</span></ng-template>
+                        <div layout="row" layout-margin>
+                              <mat-form-field flex="80" class="example-full-width">
+                                    <input matInput placeholder="Title" formControlName="title">
+                              </mat-form-field>
+                              <mat-form-field flex="20" class="example-full-width">
+                                    <input matInput placeholder="Symbol" formControlName="symbol">
+                              </mat-form-field>
+                        </div>   
+                  </td-step>
+
+                  <td-step #step2 sublabel="Enter Story text" [active]="false" [disabled]="disabled"
+                        (activated)="activeStep1Event()" (deactivated)="deactiveStep1Event()">
+                        <ng-template td-step-label><span>Story Summry</span></ng-template>
+                        <div layout="row" layout-margin>
+                              <mat-form-field flex="100" class="example-full-width">
+                                    <textarea matInput placeholder="Textarea" formControlName="summary"></textarea>
+                              </mat-form-field>
+                        </div>
+                  </td-step>
+
+                  <td-step #step3 sublabel="Upload a file for this story." [active]="false" [disabled]="disabled"
+                        (activated)="activeStep1Event()" (deactivated)="deactiveStep1Event()">
+                        <ng-template td-step-label><span>File Upload</span></ng-template>
+                        <div layout="row">
+                              <mat-form-field tdFileDrop (fileDrop)="files = $event"
+                                    (click)="fileInput.inputElement.click()" (keyup.enter)="fileInput.inputElement.click()"
+                                    (keyup.delete)="fileInput.clear()" (keyup.backspace)="fileInput.clear()" flex>
+                                    <input matInput placeholder="select or drop files"
+                                          [value]="files?.length ? (files?.length + ' files') : files?.name"
+                                          readonly />
+                              </mat-form-field>
+                              <button mat-icon-button *ngIf="files" (click)="fileInput.clear()" (keyup.enter)="fileInput.clear()">
+                                    <mat-icon>cancel</mat-icon>
+                              </button>
+                              <td-file-input color="accent" class="push-left-sm push-right-sm" #fileInput formControlName="storyFiles" multiple>
+                                    <mat-icon>folder</mat-icon>
+                                    <span class="text-upper">Browse...</span>
+                              </td-file-input>
+                        </div>
+                  </td-step>
+
+            </td-steps>
+
+            <div layout="row" layout-margin>
+                  <button flex="100" color="primary"  mat-raised-button type="submit" [disabled]="!stepForm.valid">Submit</button>
+            </div>
+
+      </form>
+
+</td-layout-card-over>
