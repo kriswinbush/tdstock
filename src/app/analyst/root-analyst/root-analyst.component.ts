@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { StepState } from "@covalent/core/steps";
 import { FormBuilder } from "@angular/forms";
-
+import { StoryStoreService } from "../../services/story-store.service";
 @Component({
   selector: 'app-root-analyst',
   templateUrl: './root-analyst.component.html',
   styleUrls: ['./root-analyst.component.scss']
 })
-export class RootAnalystComponent implements OnInit {
+export class RootAnalystComponent {
 
   stepForm = this.fb.group({
     symbol: [''],
@@ -16,10 +16,14 @@ export class RootAnalystComponent implements OnInit {
     storyFiles: ['']
   });
 
-  constructor(public fb: FormBuilder) { }
+  constructor(public fb: FormBuilder, public storyStore: StoryStoreService) { }
 
   onSubmit() {
     console.log(this.stepForm.value);
+    let form = this.stepForm.value;
+    form.storyFiles = "https://placekitten.com/g/200/200";
+    this.stepForm.reset();
+    this.storyStore.addStory(form);
   }
 
   activeDeactiveStep1Msg: string = 'No select/deselect detected yet';
@@ -41,14 +45,6 @@ export class RootAnalystComponent implements OnInit {
 
   deactiveStep1Event(): void {
     this.activeDeactiveStep1Msg = 'Deactive event emitted.';
-  }
-
-  ngOnInit() {
-  }
-
-  submitStockStory(form) {
-    console.log("submitted")
-    console.log(form);
   }
 
 }

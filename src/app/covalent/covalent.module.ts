@@ -5,6 +5,11 @@ import { CovalentHttpModule } from '@covalent/http';
 import { CovalentHighlightModule } from '@covalent/highlight';
 import { CovalentMarkdownModule } from '@covalent/markdown';
 import { CovalentDynamicFormsModule } from '@covalent/dynamic-forms';
+import { CovalentBaseEchartsModule } from '@covalent/echarts/base';
+import { CovalentBarEchartsModule } from '@covalent/echarts/bar';
+import { CovalentMessageModule } from '@covalent/core/message';
+import { CovalentNotificationsModule } from '@covalent/core/notifications';
+import { CovalentCommonModule } from '@covalent/core/common';
 
 @NgModule({
   declarations: [],
@@ -14,7 +19,13 @@ import { CovalentDynamicFormsModule } from '@covalent/dynamic-forms';
     CovalentHttpModule.forRoot(),
     CovalentHighlightModule,
     CovalentMarkdownModule,
-    CovalentDynamicFormsModule
+    CovalentDynamicFormsModule,
+    CovalentBaseEchartsModule,
+    CovalentBarEchartsModule,
+    CovalentMessageModule,
+    CovalentNotificationsModule,
+    CovalentCommonModule
+
   ],
   exports: [
     CovalentLayoutModule,
@@ -22,7 +33,12 @@ import { CovalentDynamicFormsModule } from '@covalent/dynamic-forms';
     CovalentHttpModule,
     CovalentHighlightModule,
     CovalentMarkdownModule,
-    CovalentDynamicFormsModule
+    CovalentDynamicFormsModule,
+    CovalentBaseEchartsModule,
+    CovalentBarEchartsModule,
+    CovalentMessageModule,
+    CovalentNotificationsModule,
+    CovalentCommonModule
   ]
 })
 export class CovalentModule { }
