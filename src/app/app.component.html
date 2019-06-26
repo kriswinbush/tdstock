@@ -1,9 +1,13 @@
 <td-layout [mode]="side" [opened]="false" [sidenavWidth]="257">
-  <td-navigation-drawer sidenavTitle="Td Stock" logo="logo" icon="icon" name="name" password="password" color="color"
+  <td-navigation-drawer sidenavTitle="Td Stock" logo="logo" icon="icon" name="user@terradata.com" password="password" color="color"
     navigationRoute="/">
-    .. main drawer content
     <div td-navigation-drawer-menu>
-      .. menu drawer content
+        <mat-nav-list>
+            <a mat-list-item tdLayoutToggle>
+              <mat-icon>exit_to_app</mat-icon>
+              Logout
+            </a>
+          </mat-nav-list>
     </div>
   </td-navigation-drawer>
   <div td-sidenav-content>
@@ -18,9 +22,9 @@
       <button mat-icon-button td-menu-button tdLayoutToggle>
         <mat-icon>menu</mat-icon>
       </button>
+      
       <div flex></div>
-      <span [routerLink]="['/']" class="cursor-pointer">Td Stock</span>
-      <div flex></div>
+
       <button mat-icon-button matTooltip="Comsuner" routerLink='/consumer'>
         <mat-icon>show_chart</mat-icon>
       </button>
@@ -30,6 +34,37 @@
       <button mat-icon-button matTooltip="Home" routerLink='/'>
         <mat-icon>home</mat-icon>
       </button>
+      <button class="overflow-visible" mat-icon-button [matMenuTriggerFor]="notificationsMenu">
+          <td-notification-count [notifications]="101" [limit]=50>
+            <mat-icon>warning</mat-icon>
+          </td-notification-count>
+        </button>
+        <mat-menu #notificationsMenu="matMenu" [overlapTrigger]="false">
+            <div layout="row">
+              <span flex></span>
+                <div class="mat-subheading-2 push-none">Stock Alerts</div>
+              <span flex></span>
+            </div>
+            <mat-divider></mat-divider>
+            <mat-nav-list dense>
+              <ng-template let-last="last" ngFor [ngForOf]="[0,1,2,3,4,5,6,7,8,9]">
+                <a mat-list-item>
+                  <mat-icon matListAvatar>warning</mat-icon>
+                  <h4 matLine><span class="text-wrap">A user did an activity on an item that you've subscribed to follow actions on.</span></h4>
+                  <p matLine>22 minutesto ago</p>
+                </a>
+                <mat-divider *ngIf="!last"></mat-divider>
+              </ng-template>
+            </mat-nav-list>
+            <mat-divider></mat-divider>
+            <div layout="row">
+              <span flex></span>
+              <button mat-button color="accent">
+                See All Stock Alerts
+              </button>
+              <span flex></span>
+            </div>
+        </mat-menu>
     </div>
     <div class="container">
       <router-outlet></router-outlet>

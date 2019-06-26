@@ -1,15 +1,24 @@
 <td-layout-card-over cardTitle="Consumer" cardSubtitle="Stock Market Cosumer Dashboard">
-      <h1>Consumer analyst</h1>
-      <h1>Consumer analyst</h1>
-      <h1>Consumer analyst</h1>
-      <h1>Consumer analyst</h1>
-      <h1>Consumer analyst</h1>
-      <h1>Consumer analyst</h1>
-      <h1>Consumer analyst</h1>
-      <h1>Consumer analyst</h1>
-      <h1>Consumer analyst</h1>
-      <h1>Consumer analyst</h1>
-      <h1>Consumer analyst</h1>
-      <h1>Consumer analyst</h1>
-      <h1>Consumer analyst</h1>
+      <div layout="row">
+            <td-chart flex [style.height.px]="300" [config]="config"></td-chart>
+      </div>
+      <div layout="row" layout-margin>
+            <div flex="100">
+                  <mat-card>
+                        <mat-toolbar color="accent">
+                              <mat-icon>description</mat-icon>
+                              <h1>Market Stories</h1>
+                        </mat-toolbar>
+                        <div layout-gt-xs="row" *ngFor="let item of storyStore.stories$ | async">
+                              <mat-card flex="100">
+                                    <mat-card-title-group>
+                                          <mat-card-title class="text-xl push-none">{{item.title}}</mat-card-title>
+                                          <mat-card-subtitle class="push-none">{{item.symbol}}</mat-card-subtitle>
+                                          <img mat-card-sm-image src="https://placekitten.com/g/200/200">
+                                    </mat-card-title-group>
+                              </mat-card>
+                        </div>
+                  </mat-card>
+            </div>
+      </div>
 </td-layout-card-over>
